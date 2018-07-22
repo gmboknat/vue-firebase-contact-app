@@ -1,22 +1,26 @@
 <template>
-  <div class="user-form">
-    <!-- <h1>{{ msg }}</h1> -->
+  <div class="form">
+    <card>
+      <card-body>
+        <form>
+          <p class="h4 text-center py-4">Sign up</p>
+          <div class="grey-text">
+            <md-input label="Your email" icon="envelope" type="email" v-model="email"/>
+            <md-input label="Your password" icon="lock" type="password" v-model="password"/>
+          </div>
+          <div class="text-center py-4 mt-3">
+            <btn color="primary" @click.native.stop="signUp" type="button">Register</btn>
+            <btn color="blue-grey" @click.native="goLogin"><fa icon="arrow-left" class="mr-1"/> Back</btn>
 
-<form>
-  <p class="h4 text-center mb-4">Sign up</p>
-  <div class="grey-text">
-    <md-input label="Your email" icon="envelope" type="email" v-model="email"/>
-    <md-input label="Your password" icon="lock" type="password" v-model="password"/>
-  </div>
-  <div class="text-center">
-    <btn color="primary" @click.native="signUp()" type="button">Register</btn>
-  </div>
-</form>
+          </div>
+        </form>
+      </card-body>
+    </card>
   </div>
 </template>
 
 <script>
-import {MdInput, Btn} from 'mdbvue';
+import {MdInput, Btn, Card, CardBody, Fa} from 'mdbvue';
 
 import firebase from "firebase";
 
@@ -25,6 +29,9 @@ export default {
   components: {
     MdInput,
     Btn,
+    Card,
+    CardBody,
+    Fa
   },
   props: {
     msg: String
@@ -38,10 +45,13 @@ export default {
   methods: {
     signUp() {
       firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(() => {
-        this.$router.replace('about');
+        this.$router.replace('/');
       }).catch((err) => {
         console.log('error: ', err.message)
       })
+    },
+    goLogin() {
+      this.$router.replace('/login');
     }
   }
 }
@@ -49,4 +59,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+  .form {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 </style>

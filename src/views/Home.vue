@@ -1,17 +1,19 @@
 <template>
   <div class="home">
-    <signup-form msg="Welcome to Your Vue.js App"/>
+    <contact-list/>
+    <h1>sample</h1>
   </div>
+
 </template>
 
 <script>
 // @ is an alias to /src
-import SignupForm from '@/components/SignupForm.vue';
+import ContactList from '@/components/ContactList.vue';
 
 export default {
   name: 'home',
   components: {
-    SignupForm
+    ContactList
   }
 }
 </script>
