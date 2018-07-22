@@ -3,8 +3,8 @@
     <navbar class="indigo" name="Vue Firebase CRUD" href="#/">
       <navbar-collapse>
         <navbar-nav>
-          <navbar-item href="#/login" v-bind:class="{'active': $route.name == 'login'}" v-if="!isAuthenticated">Sign In</navbar-item>
-          <navbar-item href="#/signup" v-bind:class="{'active': $route.name == 'signup'}" v-if="!isAuthenticated">Sign Up</navbar-item>
+          <!-- <navbar-item href="#/login" v-bind:class="{'active': $route.name == 'login'}" v-if="!isAuthenticated">Sign In</navbar-item>
+          <navbar-item href="#/signup" v-bind:class="{'active': $route.name == 'signup'}" v-if="!isAuthenticated">Sign Up</navbar-item> -->
         </navbar-nav>
         <btn color="primary" @click.native="logout" v-if="isAuthenticated">Logout</btn>
       </navbar-collapse>
