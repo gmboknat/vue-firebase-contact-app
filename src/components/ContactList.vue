@@ -23,7 +23,6 @@
 <script>
 import { ListGroup, ListGroupItem, Btn, MdInput } from "mdbvue";
 import db from "@/db";
-var contactsRef = db.ref("contact-list");
 
 export default {
   name: "contact-list",
@@ -37,22 +36,19 @@ export default {
     return {
       contacts: [],
       name: '',
-      number: ''
+      number: '',
     };
   },
   methods: {
     addContact: function() {
+      var contactsRef = db.ref("contact-list/" + this.$store.state.user.uid);
       var user = {
         name: this.name,
         number: this.number
       }
       if (this.name && this.number) {
-        contactsRef.push(user).then((success) => {
-        console.log('suc', success)
+        contactsRef.push(user).then(() => {
         this.name = this.number = ''
-
-        
-        console.log('123', this.name, this.number)
       })
       .catch(function(err) {
         console.log('err: ', err)
@@ -60,8 +56,10 @@ export default {
     }
       }
   },
-  firebase: {
-    contacts: contactsRef
+  firebase() {
+    return {
+      contacts: db.ref("contact-list/" + this.$store.state.user.uid)
+    }
   }
 };
 </script>
