@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <contact-list/>
-    <h1>sample</h1>
   </div>
 
 </template>

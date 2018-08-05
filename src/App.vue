@@ -5,8 +5,8 @@
         <navbar-nav>
           <!-- <navbar-item href="#/login" v-bind:class="{'active': $route.name == 'login'}" v-if="!isAuthenticated">Sign In</navbar-item>
           <navbar-item href="#/signup" v-bind:class="{'active': $route.name == 'signup'}" v-if="!isAuthenticated">Sign Up</navbar-item> -->
+          <navbar-item @click.native="logout" v-if="isAuthenticated">Logout</navbar-item>
         </navbar-nav>
-        <btn color="primary" @click.native="logout" v-if="isAuthenticated">Logout</btn>
       </navbar-collapse>
     </navbar>
     <router-view class="container router-view"/>
@@ -54,7 +54,7 @@ export default {
 
 </script>
 
-<style lang="scss" >
+<style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -67,7 +67,13 @@ export default {
   .router-view {
     margin-top: 20px;
   }
-  
+  .navbar-nav {
+    margin-left: auto;
+    margin-right: unset !important;
+  }
+  .navbar-link {
+    color: white
+  }
 }
 
 </style>
